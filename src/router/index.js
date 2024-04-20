@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useUserStore } from '@/stores/index.js'
 
 // 在vue3 compositionAPI中
 // 1. 获取路由对象 router useRouter
@@ -38,6 +39,15 @@ const router = createRouter({
       component: () => import('@/views/user/UserPassword.vue')
     }
   ]
+})
+
+// 登录访问拦截
+router.beforeEach((to) => {
+  const userStore = useUserStore()
+  // 如果没有token，且访问的是非登录页，就拦截到登录
+  if (!userStore.token && to.path !== '/login') {
+    return '/login'
+  }
 })
 
 export default router

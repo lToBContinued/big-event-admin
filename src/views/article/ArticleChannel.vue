@@ -6,11 +6,12 @@ import {
 } from '@/api/article.js'
 import { Delete, Edit } from '@element-plus/icons-vue'
 import ChannelEdit from '@/views/article/components/ChannelEdit.vue'
+import PageContainer from '@/components/pageContainer.vue'
 
 const channelList = ref([])
 const loading = ref(false)
 const dialog = ref(null)
-// 获取文章列表
+// 获取文章列表----------------------------------------------------------
 const getChannels = async () => {
   loading.value = true
   const res = await articleGetChannelsService()
@@ -19,13 +20,13 @@ const getChannels = async () => {
 }
 getChannels()
 
-// 弹层显示
+// 弹层显示----------------------------------------------------------
 const onEditChannel = async (row) => {
   // 打开弹层并进行回显
   dialog.value.open(row)
 }
 
-// 添加文章分类
+// 添加文章分类----------------------------------------------------------
 const onAddChannel = () => {
   dialog.value.open({})
 }
@@ -33,7 +34,7 @@ const onSuccess = () => {
   getChannels()
 }
 
-// 删除文章分类
+// 删除文章分类----------------------------------------------------------
 const onDelChannel = (row) => {
   ElMessageBox.confirm('你确定要删除吗？', '温馨提示', {
     confirmButtonText: '删除',
@@ -50,7 +51,7 @@ const onDelChannel = (row) => {
 </script>
 
 <template>
-  <pageContainer title="文章分类">
+  <page-container title="文章分类">
     <!--按钮-->
     <template #extra>
       <el-button type="primary" @click="onAddChannel">添加分类</el-button>
@@ -63,12 +64,7 @@ const onDelChannel = (row) => {
       height="460px"
       style="width: 100%"
     >
-      <el-table-column
-        fixed
-        label="序号"
-        type="index"
-        width="100"
-      ></el-table-column>
+      <el-table-column label="序号" type="index" width="100"></el-table-column>
       <el-table-column label="分类名称" prop="cate_name"></el-table-column>
       <el-table-column label="分类别名" prop="cate_alias"></el-table-column>
       <el-table-column class="operation" label="操作" width="100">
@@ -97,7 +93,7 @@ const onDelChannel = (row) => {
 
     <!--弹层提示-->
     <ChannelEdit ref="dialog" @success="onSuccess"></ChannelEdit>
-  </pageContainer>
+  </page-container>
 </template>
 
 <style lang="scss" scoped></style>

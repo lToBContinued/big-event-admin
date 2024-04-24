@@ -7,13 +7,13 @@ import {
 
 const formRef = ref(null) // 获取表单组件
 const dialogVisible = ref(false) // 控制弹层显示
-// 表单数据
+// 表单数据----------------------------------------------------------
 const formModel = ref({
   cate_name: '',
   cate_alias: ''
 })
 
-// 表单校验规则
+// 表单校验规则----------------------------------------------------------
 const rules = {
   cate_name: [
     { required: true, message: '分类名称不能为空', trigger: 'blur' },
@@ -43,8 +43,8 @@ const open = (row) => {
   formModel.value = { ...row } // 浅拷贝往表单中添加数据
 }
 
+// 编辑文章分类----------------------------------------------------------
 const emit = defineEmits(['success'])
-// 编辑文章分类
 const onSubmit = async () => {
   await formRef.value.validate()
   // 通过文章的id是否存在来判断是编辑还是添加
@@ -61,7 +61,7 @@ const onSubmit = async () => {
   emit('success')
 }
 
-// 向外暴露方法
+// 向外暴露方法----------------------------------------------------------
 defineExpose({
   open,
   onSubmit

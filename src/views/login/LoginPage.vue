@@ -189,13 +189,6 @@ const login = async () => {
         </el-form-item>
 
         <el-form-item>
-          <div class="flex">
-            <el-checkbox v-model="checked1" label="记住我" size="large" />
-            <el-checkbox v-model="checked2" label="忘记密码" size="large" />
-          </div>
-        </el-form-item>
-
-        <el-form-item>
           <el-link :underline="false" @click="isRegister = true">
             <el-icon> <Right /> </el-icon>&nbsp;注册
           </el-link>

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import { useUserStore } from '@/stores/index.js'
 
 // 在vue3 compositionAPI中
@@ -8,7 +8,7 @@ import { useUserStore } from '@/stores/index.js'
 //    const route = useRoute()
 const router = createRouter({
   // vite 中的环境变量 import.meta.env.BASE_URL 就是 vite.config.js 中的 base 配置项
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/login', component: () => import('@/views/login/LoginPage.vue') }, // 登录页
     {

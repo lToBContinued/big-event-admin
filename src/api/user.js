@@ -40,3 +40,23 @@ export const userUpdateInfoService = (data) => {
     data
   })
 }
+
+// 更新用户头像
+export const userUpdateAvatarService = (avatar) => {
+  return request({
+    url: '/my/update/avatar',
+    method: 'PATCH',
+    data: {
+      avatar
+    }
+  })
+}
+
+// 修改密码
+export const userUpdatePasswordService = (data) => {
+  return request({
+    url: '/my/updatepwd',
+    method: 'PATCH',
+    data
+  })
+}

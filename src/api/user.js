@@ -31,3 +31,12 @@ export const userGetInfoService = () => {
     url: '/my/userinfo'
   })
 }
+
+// 更新用户个人信息
+export const userUpdateInfoService = (data) => {
+  return request({
+    url: '/my/userinfo',
+    method: 'PUT',
+    data
+  })
+}
